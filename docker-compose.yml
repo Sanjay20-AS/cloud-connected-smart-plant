@@ -1,0 +1,17 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: sqlite:///./smartplant.db
+      JWT_SECRET: local-docker-secret-change-me
+      DEVICE_API_KEY: local-device-key
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: change-me
+      CORS_ORIGINS: http://localhost:5173
+    volumes:
+      - smartplant-data:/app
+
+volumes:
+  smartplant-data:
