@@ -25,7 +25,7 @@ class PlantSetting(Base):
     moisture_threshold: Mapped[float] = mapped_column(Float, default=35.0)
     temperature_alert: Mapped[float] = mapped_column(Float, default=38.0)
     humidity_alert: Mapped[float] = mapped_column(Float, default=25.0)
-    watering_seconds: Mapped[int] = mapped_column(Integer, default=10)
+    watering_duration_seconds: Mapped[int] = mapped_column(Integer, default=10)
     cooldown_seconds: Mapped[int] = mapped_column(Integer, default=60)
 
 
