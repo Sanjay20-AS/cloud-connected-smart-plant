@@ -108,11 +108,22 @@ def evaluate_reading(db: Session, reading: SensorReading):
     # Automatic watering
     # ---------------------------------------------------------
 
-    if (
-        reading.soil_moisture < settings.moisture_threshold
-        and not device.pump_on
-        and cooldown_finished
-    ):
+    should_water = (
+    reading.soil_moisture < settings.moisture_threshold
+    and not device.pump_on
+    and cooldown_finished
+    )
+
+    print(
+        f"[WATERING CHECK] "
+        f"moisture={reading.soil_moisture}, "
+        f"threshold={settings.moisture_threshold}, "
+        f"pump_on={device.pump_on}, "
+        f"cooldown_finished={cooldown_finished}, "
+        f"should_water={should_water}"
+    )
+
+    if should_water:
 
         event = WateringEvent(
             device_id=reading.device_id,
