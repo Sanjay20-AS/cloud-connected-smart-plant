@@ -26,7 +26,7 @@ class SettingOut(BaseModel):
     moisture_threshold: float
     temperature_alert: float
     humidity_alert: float
-    watering_seconds: int
+    watering_duration_seconds: int
     cooldown_seconds: int
 
     model_config = {"from_attributes": True}
